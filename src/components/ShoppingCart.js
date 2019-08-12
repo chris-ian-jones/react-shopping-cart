@@ -7,6 +7,7 @@ import Item from './ShoppingCartItem';
 import { CartContext } from './../contexts/CartContext'
 
 const ShoppingCart = () => {
+  // 4.) Consume the data in some child component
   const { cart, removeItem } = useContext(CartContext)
 
 	const getCartTotal = () => {
@@ -18,7 +19,11 @@ const ShoppingCart = () => {
 	return (
 		<div className="shopping-cart">
 			{cart.map(item => (
-				<Item key={item.id} removeItem={removeItem} {...item} />
+        <Item 
+          key={item.id} 
+          removeItem={removeItem} 
+          {...item} 
+        />
 			))}
 
 			<div className="shopping-cart__checkout">

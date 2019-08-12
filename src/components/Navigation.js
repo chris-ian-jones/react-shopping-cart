@@ -5,8 +5,8 @@ import { NavLink } from 'react-router-dom';
 import { CartContext } from './../contexts/CartContext'
 
 const Navigation = () => {
+  // 4.) Consume the data in some child component
   const cart = useContext(CartContext)
-  console.log('navigation: cart= ', cart)
   
   return (
 		<div className="navigation">

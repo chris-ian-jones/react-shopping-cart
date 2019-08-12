@@ -7,6 +7,7 @@ import Product from './Product';
 import { ProductContext } from './../contexts/ProductContext'
 
 const Products = () => {
+  // 4.) Consume the data in some child component
   const { products, addItem } = useContext(ProductContext)
 
 	return (

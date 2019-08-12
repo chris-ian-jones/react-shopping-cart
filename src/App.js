@@ -15,32 +15,22 @@ function App() {
 	const [products] = useState(data);
 	const [cart, setCart] = useState([]);
 
-	const addItem = item => {
-		setCart([...cart, item]);
-  };
+	const addItem = item => setCart([...cart, item])
   
-  const removeItem = id => {
-    console.log('clicked remove item, cart: ', cart)
-    console.log('clicked remove item, id: ', id)
-    setCart(cart.filter(item => item.id !== id))
-  }
-
-  {console.log('cart: ', cart)}
+  // iterates over cart array, filtering the items in cart
+  // returning items whose id is different to passed in id from ShoppingCartItem component
+  const removeItem = id => setCart(cart.filter(item => item.id !== id))
   
   return (
+    // 2.) Wrap component tree inside Provider component
+    // 3.) Pass the data to the value prop of the Provider
     <ProductContext.Provider value={{ products, addItem }}>
       <CartContext.Provider value ={{ cart, removeItem }}>
         <div className="App">
           <Navigation cart={cart} />
-
           {/* Routes */}
-          <Route exact path="/"component={Products}/>
-
-          <Route
-            path="/cart"
-            render={() => <ShoppingCart cart={cart} />}
-          />
-          
+          <Route exact path="/" component={Products} />
+          <Route path="/cart" component={ShoppingCart} />
         </div>
       </CartContext.Provider>
     </ProductContext.Provider>
