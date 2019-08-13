@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Navigation = props => {
-	return (
+// Contexts
+import { CartContext } from './../contexts/CartContext'
+
+const Navigation = () => {
+  // 4.) Consume the data in some child component
+  const cart = useContext(CartContext)
+  
+  return (
 		<div className="navigation">
 			<NavLink to="/">Products</NavLink>
 			<NavLink to="/cart">
-				Cart <span>{props.cart.length}</span>
+				Cart <span>{cart.cart.length}</span>
 			</NavLink>
 		</div>
 	);
